@@ -22,12 +22,12 @@ function Player() {
         <div className='flex items-center gap-5'>
           <img className='w-4 cursor-pointer' src={assets.shuffle_icon} />
           <img className='w-4 cursor-pointer' src={assets.prev_icon} />
-          <img className='w-6 cursor-pointer' src={assets.play_icon} />
+          <img className='w-5 cursor-pointer' src={assets.play_icon} />
           <img className='w-4 cursor-pointer' src={assets.next_icon} />
           <img className='w-4 cursor-pointer' src={assets.loop_icon} />
         </div>
 
-        <div className='flex items-center gap-3 w-full'>
+        <div className='flex items-center gap-3 w-full ml-0.5'>
           <p className='text-xs'>0:00</p>
           <div className='flex-1 h-1 bg-gray-300 rounded-full cursor-pointer'>
             <div className='h-1 w-0 bg-green-500 rounded-full'></div>
