@@ -103,7 +103,7 @@ export const albumsData = [
     id: 3,
     name: "Kollywood Chill",
     image: kollychill,
-    desc: "Cool tracks from Kollywood music industry",
+    desc: "Cool tracks from Kollywood Music",
     bgColor: "#44337a",
   },
   {
@@ -129,9 +129,9 @@ export const albumsData = [
   },
   {
     id: 7,
-    name: "Yuvan Hits",
+    name: "Yuvan Drugs",
     image: yuvan,
-    desc: "Love and more love from Aadhi",
+    desc: "Love and more love from Yuvan",
     bgColor: "#4E3822",
   },
 ];
