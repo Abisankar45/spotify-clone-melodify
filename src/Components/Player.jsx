@@ -1,17 +1,20 @@
-import React from 'react'
+import React, { useContext, useRef } from 'react'
 import { assets, songsData } from '../assets/assets'
+import { PlayerContext } from '../context/PlayerContext'
 
 function Player() {
+  const {seekBg, seekBar, play, pause, playStatus, track} = useContext(PlayerContext);
   return (
     <div className='fixed bottom-0 left-0 right-0 h-22.5 bg-black flex justify-between items-center text-white px-4'>
 
       {/* LEFT */}
       <div className='flex items-center gap-4 w-1/4 min-w-45'>
-        <img className='w-12' src={songsData[0].image} alt="song0" />
+      {/* Track Changes */}
+        <img className='w-12' src={track.image} alt="song0" />  
         <div>
-          <p>{songsData[0].name}</p>
+          <p>{track.name}</p>
           <p className='text-xs text-gray-400'>
-            {songsData[0].desc.slice(0,10)}...
+            {track.desc.slice(0,10)}...
           </p>
         </div>
       </div>
@@ -22,15 +25,17 @@ function Player() {
         <div className='flex items-center gap-5'>
           <img className='w-4 cursor-pointer' src={assets.shuffle_icon} />
           <img className='w-4 cursor-pointer' src={assets.prev_icon} />
-          <img className='w-5 cursor-pointer' src={assets.play_icon} />
+          {/* play and pause icon visibility */}
+          {playStatus?(<img onClick={pause} className='w-5 cursor-pointer' src={assets.pause_icon} />):
+          (<img onClick={play} className='w-5 cursor-pointer' src={assets.play_icon} />)}
           <img className='w-4 cursor-pointer' src={assets.next_icon} />
           <img className='w-4 cursor-pointer' src={assets.loop_icon} />
         </div>
 
         <div className='flex items-center gap-3 w-full ml-0.5'>
           <p className='text-xs'>0:00</p>
-          <div className='flex-1 h-1 bg-gray-300 rounded-full cursor-pointer'>
-            <div className='h-1 w-0 bg-green-500 rounded-full'></div>
+          <div ref={seekBg} className='flex-1 h-1 bg-gray-300 rounded-full cursor-pointer'>
+            <div ref={seekBar} className='h-1 w-0 bg-green-500 rounded-full'></div>
           </div>
           <p className='text-xs'>4:20</p>
         </div>
