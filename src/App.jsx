@@ -1,19 +1,23 @@
-import React, { useEffect, useState } from 'react'
-import Home from './Components/Home'
-import Opening from './Components/Opening'
+import React, { useState } from 'react'
+import Home from './Components/Home';
+import Opening from './Components/Opening';
 
 function App() {
-
   const [isSplashVisible, setSplashVisible] = useState(true);
 
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setSplashVisible(false);
-    }, 7000);
-    return () => clearTimeout(timer);
-  }, []);
+  const handleIntroEnd = () => {
+    setSplashVisible(false);
+  };
 
-  return isSplashVisible ? <Opening /> : <Home />;
+  return (
+    <>
+      {isSplashVisible ? (
+        <Opening onEnd={handleIntroEnd} />
+      ) : (
+        <Home />
+      )}
+    </>
+  )
 }
 
-export default App
+export default App;

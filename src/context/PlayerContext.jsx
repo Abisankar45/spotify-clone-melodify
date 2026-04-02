@@ -3,7 +3,7 @@ import { songsData } from "../assets/assets";
 
 export const PlayerContext = createContext();
 
-const PlayerContextProvider = ({ children }) => {
+const PlayerContextProvider = (props) => {
     const audioRef = useRef();
     const seekBg = useRef();
     const seekBar = useRef();
@@ -11,77 +11,77 @@ const PlayerContextProvider = ({ children }) => {
     const [track, setTrack] = useState(songsData[4]);
     const [playStatus, setPlayStatus] = useState(false);
     const [time, setTime] = useState({
-        currentTime: { second: "--", minute: "--" },
-        totalTime:   { second: "--", minute: "--" },
+        currentTime: {
+            second: "00",
+            minute: "00",
+        },
+        totalTime: {
+            second: "00",
+            minute: "00",
+        },
     });
 
     useEffect(() => {
-        const audio = audioRef.current;
-        if (!audio) return;
-
-        const handleTimeUpdate = () => {
-            if (!audio.duration || isNaN(audio.duration)) return;
-            seekBar.current.style.width =
-                ((audio.currentTime / audio.duration) * 100) + "%";
-            setTime({
-                currentTime: {
-                    second: Math.floor(audio.currentTime % 60),
-                    minute: Math.floor(audio.currentTime / 60),
-                },
-                totalTime: {
-                    second: Math.floor(audio.duration % 60),
-                    minute: Math.floor(audio.duration / 60),
-                },
-            });
-        };
-
-        audio.addEventListener("timeupdate", handleTimeUpdate);
-        return () => audio.removeEventListener("timeupdate", handleTimeUpdate);
-    }, []);
-
-    const shouldAutoPlay = useRef(false);
-
-    useEffect(() => {
-        if (shouldAutoPlay.current && audioRef.current) {
-            audioRef.current.play();
-            setPlayStatus(true);
-            shouldAutoPlay.current = false;
-        }
-    }, [track]);
+        setTimeout(() => {
+            if (audioRef.current) {
+                audioRef.current.ontimeupdate = () => {
+                    // Check if duration is a valid number before updating
+                    if (!isNaN(audioRef.current.duration)) {
+                        seekBar.current.style.width = ((audioRef.current.currentTime / audioRef.current.duration) * 100) + "%";
+                        
+                        setTime({
+                            currentTime: {
+                                second: Math.floor(audioRef.current.currentTime % 60).toString().padStart(2, '0'),
+                                minute: Math.floor(audioRef.current.currentTime / 60).toString().padStart(2, '0'),
+                            },
+                            totalTime: {
+                                second: Math.floor(audioRef.current.duration % 60).toString().padStart(2, '0'),
+                                minute: Math.floor(audioRef.current.duration / 60).toString().padStart(2, '0'),
+                            },
+                        });
+                    }
+                };
+            }
+        }, 1000);
+    }, [audioRef, track]); // Added track to dependency to ensure update on song change
 
     const play = () => {
         audioRef.current.play();
         setPlayStatus(true);
-    };
+    }
 
     const pause = () => {
         audioRef.current.pause();
         setPlayStatus(false);
-    };
+    }
 
-    const playWithId = (id) => {
-        setTrack(songsData[id]);
-        shouldAutoPlay.current = true;
-    };
+    const playWithId = async (id) => {
+        await setTrack(songsData[id]);
+        await audioRef.current.play();
+        setPlayStatus(true);
+    }
 
-    const before = () => {
+    const before = async () => {
         if (track.id > 0) {
-            setTrack(songsData[track.id - 1]);
-            shouldAutoPlay.current = true;
+            await setTrack(songsData[track.id - 1])
+            await audioRef.current.play();
+            setPlayStatus(true);
         }
-    };
+    }
 
-    const after = () => {
+    const after = async () => {
         if (track.id < songsData.length - 1) {
-            setTrack(songsData[track.id + 1]);
-            shouldAutoPlay.current = true;
+            await setTrack(songsData[track.id + 1])
+            await audioRef.current.play();
+            setPlayStatus(true);
         }
-    };
+    }
 
-    const seekBgClick = (e) => {
-        audioRef.current.currentTime =
-            (e.nativeEvent.offsetX / seekBg.current.offsetWidth) * audioRef.current.duration;
-    };
+    const seekBgClick = async (e) => {
+        if (audioRef.current.duration) {
+            audioRef.current.currentTime = ((e.nativeEvent.offsetX / seekBg.current.offsetWidth) * audioRef.current.duration);
+        }
+    }
 
     const contextValue = {
         audioRef,
@@ -98,14 +98,14 @@ const PlayerContextProvider = ({ children }) => {
         playWithId,
         before,
         after,
-        seekBgClick,
-    };
+        seekBgClick
+    }
 
     return (
         <PlayerContext.Provider value={contextValue}>
-            {children}
+            {props.children}
         </PlayerContext.Provider>
-    );
-};
+    )
+}
 
 export default PlayerContextProvider;
