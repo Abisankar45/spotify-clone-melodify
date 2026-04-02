@@ -143,7 +143,7 @@ export const songsData = [
     image: aadukalam,
     file: othasollala,
     desc: "Happy tunes from Dhanush na!!",
-    duration: "3:59",
+    duration: "03:59",
   },
   {
     id: 1,
@@ -151,7 +151,7 @@ export const songsData = [
     image: david,
     file: kanavekanavae,
     desc: "Dive into anirudh sad zone",
-    duration: "4:44",
+    duration: "04:44",
   },
   {
     id: 2,
@@ -159,7 +159,7 @@ export const songsData = [
     image: enpt,
     file: naanpilaipeno,
     desc: "Crazy Love from Dhanush",
-    duration: "6:12",
+    duration: "06:12",
   },
   {
     id: 3,
@@ -167,7 +167,7 @@ export const songsData = [
     image: guru,
     file: aaruyire,
     desc: "Mesmerizing hits A.R.R > anything",
-    duration: "5:10",
+    duration: "05:10",
   },
   {
     id: 4,
@@ -175,7 +175,7 @@ export const songsData = [
     image: dhaamdhoom,
     file: anbeenanbe,
     desc: "Put a smile on your face with these happy tunes",
-    duration: "5:40",
+    duration: "05:40",
   },
   {
     id: 5,
@@ -183,7 +183,7 @@ export const songsData = [
     image: manithan,
     file: poivalva,
     desc: "Dont ever feel down listen this",
-    duration: "3:59",
+    duration: "03:59",
   },
   {
     id: 6,
@@ -191,7 +191,7 @@ export const songsData = [
     image: kodi,
     file: sirukkivaasasm,
     desc: "Put a smile on your face with these happy tunes",
-    duration: "4:35",
+    duration: "04:35",
   },
   {
     id: 7,
@@ -199,6 +199,6 @@ export const songsData = [
     image: oh_manapenne,
     file: bodhaikaname,
     desc: "Put a smile on your face with these happy tunes",
-    duration: "4:22",
+    duration: "04:22",
   },
 ];
