@@ -29,7 +29,7 @@ import dhaamdhoom from "./img/song-thumb/dhaam_dhoom.png";
 import enpt from "./img/song-thumb/enpt.jpeg";
 import guru from "./img/song-thumb/guru.png";
 import kodi from "./img/song-thumb/kodi.png";
-import manithan from "./img/song-thumb/manithan.png";
+import manithan from "./img/song-thumb/TereIshkMein.jpg";
 import oh_manapenne from "./img/song-thumb/oh-manapennae.png";
 
 import tensromance from "./img/10s-romance-tamil.jpg";
@@ -46,7 +46,7 @@ import naanpilaipeno from "./songs/Naan-Pizhaippeno.mp3";
 import kanavekanavae from "./songs/Kanave Kanave.mp3";
 import othasollala from "./songs/Otha-Sollaala.mp3";
 import anbeenanbe from "./songs/Anbe-En-Anbe.mp3";
-import poivalva from "./songs/Poi-Vazhva.mp3";
+import poivalva from "./songs/Kannae Kanmaniye.mp3";
 import sirukkivaasasm from "./songs/Sirukki-Vaasam.mp3";
 import bodhaikaname from "./songs/Bodhai-Kaname.mp3";
 
@@ -179,7 +179,7 @@ export const songsData = [
   },
   {
     id: 5,
-    name: "Poi Vazhva",
+    name: "Tere Ishk Mein",
     image: manithan,
     file: poivalva,
     desc: "Dont ever feel down listen this",

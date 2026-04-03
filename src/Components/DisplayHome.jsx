@@ -18,8 +18,7 @@ function DisplayHome() {
               name={item.name} 
               desc={item.desc} 
               id={item.id} 
-              image={item.image}
-              />
+              image={item.image}/>
               ))} 
           </div>  
         </div>
