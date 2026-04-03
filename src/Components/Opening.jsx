@@ -5,7 +5,7 @@ const Opening = ({ onEnd }) => {
   return (
     <div className='h-screen bg-[#121212] flex items-center justify-center'>
       <video
-        className='w-full object-cover mix-blend-screen'
+        className='w-full object-fill mix-blend-screen'
         src={background}
         autoPlay
         muted

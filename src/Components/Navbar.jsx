@@ -15,6 +15,7 @@ const Navbar = () => {
                 {/* <p className='bg-transparent text-white py-1 px-3 rounded-4xl'>
                     <img className='w-10 h-5' src={assets.Melodify} alt="" />
                 </p> */}
+                
                 <p className='bg-white text-black text-[15px] px-4 py-1 rounded-2xl hidden md:block cursor-pointer'>Explore Premium</p>
                 <p className='bg-black text-white py-1 px-3 rounded-2xl text-[15px] cursor-pointer'>Install App</p>
 
